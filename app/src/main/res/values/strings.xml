@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">IntroScreen</string>
+
+    <string name="slide_1_title">Delivered quickly to \n your doorstep</string>
+    <string name="slide_2_title">Order from a wide range\n of restaurants</string>
+    <string name="slide_3_title">With a wide collection\n of cuisines</string>
+    <string name="dot">•</string>
+
+</resources>
