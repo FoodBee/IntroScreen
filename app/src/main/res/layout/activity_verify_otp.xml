@@ -41,7 +41,7 @@
             android:theme="@style/TextInputLayout"
             android:textAlignment="center" />
 
-        <androidx.legacy.widget.Space
+        <View
             android:layout_width="2dp"
             android:layout_height="0dp" />
 
@@ -55,7 +55,7 @@
             android:theme="@style/TextInputLayout"
             android:textAlignment="center" />
 
-        <androidx.legacy.widget.Space
+        <View
             android:layout_width="2dp"
             android:layout_height="0dp" />
 
@@ -69,7 +69,7 @@
             android:theme="@style/TextInputLayout"
             android:textAlignment="center" />
 
-        <androidx.legacy.widget.Space
+        <View
             android:layout_width="2dp"
             android:layout_height="0dp" />
 
