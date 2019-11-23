@@ -17,33 +17,32 @@ import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
-    private var viewPager2: ViewPager? = null
-    private var myViewPagerAdapter: MyViewPagerAdapter? = null
     private var layouts: IntArray? = null
-    private var dot0: TextView? = null
-    private var dot1: TextView? = null
-    private var dot2: TextView? = null
-    private var headline: TextView? = null
-    private var getStarted: Button? = null
+    private lateinit var dot0: TextView
+    private lateinit var dot1: TextView
+    private lateinit var dot2: TextView
+    private lateinit var headline: TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        viewPager2 = findViewById(R.id.pager)
 
-        getStarted = findViewById(R.id.getstarted)
         headline = findViewById(R.id.headline)
         dot0 = findViewById(R.id.dot_0)
         dot1 = findViewById(R.id.dot_1)
         dot2 = findViewById(R.id.dot_2)
+
+
+        val viewPager2: ViewPager = findViewById(R.id.pager)
+        val getStarted: Button = findViewById(R.id.getstarted)
 
         layouts = intArrayOf(R.layout.slide_1, R.layout.slide_2, R.layout.slide_3)
 
         addBottomDotsAndText(0)
 
         val handler = Handler()
-        val update = Runnable { viewPager2!!.currentItem = (viewPager2!!.currentItem + 1) % 3 }
+        val update = Runnable { viewPager2.currentItem = (viewPager2.currentItem + 1) % 3 }
 
-        getStarted!!.setOnClickListener {
+        getStarted.setOnClickListener {
             startActivity(Intent(this@MainActivity, LoginActivity::class.java))
             overridePendingTransition(R.anim.slide_from_bottom, R.anim.slide_from_bottom)
         }
@@ -53,8 +52,8 @@ class MainActivity : AppCompatActivity() {
                 handler.post(update)
             }
         }, 2000, 2000)
-        myViewPagerAdapter = MyViewPagerAdapter()
-        viewPager2!!.adapter = myViewPagerAdapter
+        val myViewPagerAdapter = MyViewPagerAdapter()
+        viewPager2.adapter = myViewPagerAdapter
 
 
         val viewPagerPageChangeListener = object : ViewPager.OnPageChangeListener {
@@ -78,22 +77,22 @@ class MainActivity : AppCompatActivity() {
     private fun addBottomDotsAndText(i: Int) {
         when (i) {
             0 -> {
-                headline!!.text = resources.getString(R.string.slide_1_title)
-                dot0!!.setTextColor(resources.getColor(R.color.colorAccent))
-                dot1!!.setTextColor(resources.getColor(R.color.dot_inactive))
-                dot2!!.setTextColor(resources.getColor(R.color.dot_inactive))
+                headline.text = resources.getString(R.string.slide_1_title)
+                dot0.setTextColor(resources.getColor(R.color.colorAccent))
+                dot1.setTextColor(resources.getColor(R.color.dot_inactive))
+                dot2.setTextColor(resources.getColor(R.color.dot_inactive))
             }
             1 -> {
-                headline!!.text = resources.getString(R.string.slide_2_title)
-                dot0!!.setTextColor(resources.getColor(R.color.dot_inactive))
-                dot1!!.setTextColor(resources.getColor(R.color.colorAccent))
-                dot2!!.setTextColor(resources.getColor(R.color.dot_inactive))
+                headline.text = resources.getString(R.string.slide_2_title)
+                dot0.setTextColor(resources.getColor(R.color.dot_inactive))
+                dot1.setTextColor(resources.getColor(R.color.colorAccent))
+                dot2.setTextColor(resources.getColor(R.color.dot_inactive))
             }
             2 -> {
-                headline!!.text = resources.getString(R.string.slide_3_title)
-                dot0!!.setTextColor(resources.getColor(R.color.dot_inactive))
-                dot1!!.setTextColor(resources.getColor(R.color.dot_inactive))
-                dot2!!.setTextColor(resources.getColor(R.color.colorAccent))
+                headline.text = resources.getString(R.string.slide_3_title)
+                dot0.setTextColor(resources.getColor(R.color.dot_inactive))
+                dot1.setTextColor(resources.getColor(R.color.dot_inactive))
+                dot2.setTextColor(resources.getColor(R.color.colorAccent))
             }
         }
     }
