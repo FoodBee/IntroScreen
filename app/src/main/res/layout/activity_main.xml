@@ -1,113 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/slider_view_pager"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:weightSum="2"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="350dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/pager"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+    <TextView
+        android:id="@+id/headline_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/slider_view_pager"
+        tools:text="@string/slide_1_title"
+        />
 
+    <LinearLayout
+        android:id="@+id/layout_dots"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headline_tv"
+        >
+
+        <TextView
+            android:id="@+id/dot_0_tv"
+            android:layout_width="18dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/dot"
+            android:textSize="@dimen/dot_size"
+            tools:ignore="SpUsage"
             />
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/dot_1_tv"
+            android:layout_width="18dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/dot"
+            android:textSize="@dimen/dot_size"
+            tools:ignore="SpUsage"
+            />
 
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.8"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/headline"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_medium"
-                android:gravity="center_horizontal"
-                android:paddingTop="16dp"
-                android:textColor="@android:color/black"
-                android:textSize="25sp" />
-
-            <LinearLayout
-                android:id="@+id/layoutDots"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/dot_0"
-                    android:layout_width="18dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="@string/dot"
-                    android:textSize="38dp" />
-
-                <TextView
-                    android:id="@+id/dot_1"
-                    android:layout_width="18dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="@string/dot"
-                    android:textSize="38dp" />
-
-                <TextView
-                    android:id="@+id/dot_2"
-                    android:layout_width="18dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="@string/dot"
-                    android:textSize="38dp" />
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="Ready to order from your favourite restaurants?"
-                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-                android:textSize="12dp" />
-
-            <Button
-                android:id="@+id/getstarted"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="16dp"
-                android:background="@color/colorAccent"
-                android:padding="8dp"
-                android:text="GET STARTED"
-                android:textColor="#fff" />
-
-        </LinearLayout>
+        <TextView
+            android:id="@+id/dot_2_tv"
+            android:layout_width="18dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/dot"
+            android:textSize="@dimen/dot_size"
+            tools:ignore="SpUsage"
+            />
     </LinearLayout>
+    <TextView
+        android:id="@+id/ready_to_order_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="32dp"
+        android:gravity="center"
+        android:text="@string/ready_to_order_from_your_favourite_restaurants"
+        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_dots"
+        />
 
+    <Button
+        android:id="@+id/get_started_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="16dp"
+        android:background="@color/colorAccent"
+        android:text="@string/get_started"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ready_to_order_tv"
+        />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginBottom="32dp"
         android:gravity="center"
-        android:text="Developed with ❤️ by FoodBee"
+        android:text="@string/developed_with_by_foodbee"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
-        app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.968" />
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>

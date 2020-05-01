@@ -1,6 +1,5 @@
 package com.example.introscreen
 
-
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -8,121 +7,137 @@ import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.viewpager.widget.PagerAdapter
-import androidx.viewpager.widget.ViewPager
-import java.util.*
+import androidx.viewpager.widget.ViewPager.OnPageChangeListener
+import com.example.introscreen.R.color
+import com.example.introscreen.R.layout
+import com.example.introscreen.R.string
+import com.example.introscreen.databinding.ActivityMainBinding
+import java.util.Timer
+import java.util.TimerTask
 
 class MainActivity : AppCompatActivity() {
 
-    private var layouts: IntArray? = null
-    private lateinit var dot0: TextView
-    private lateinit var dot1: TextView
-    private lateinit var dot2: TextView
-    private lateinit var headline: TextView
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+  private var layouts: IntArray = intArrayOf(
+      layout.slide_1,
+      layout.slide_2,
+      layout.slide_3
+  )
 
-        headline = findViewById(R.id.headline)
-        dot0 = findViewById(R.id.dot_0)
-        dot1 = findViewById(R.id.dot_1)
-        dot2 = findViewById(R.id.dot_2)
+  private lateinit var binding: ActivityMainBinding
+
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    binding = ActivityMainBinding.inflate(layoutInflater)
+    setContentView(binding.root)
 
 
-        val viewPager2: ViewPager = findViewById(R.id.pager)
-        val getStarted: Button = findViewById(R.id.getstarted)
+    setUpClickListeners()
 
-        layouts = intArrayOf(R.layout.slide_1, R.layout.slide_2, R.layout.slide_3)
+    setUpViewPager()
+  }
 
-        addBottomDotsAndText(0)
+  private fun setUpViewPager() {
+    addBottomDotsAndText(0)
+    val handler = Handler()
+    val update = Runnable {
+      binding.sliderViewPager.currentItem = (binding.sliderViewPager.currentItem + 1) % 3
+    }
+    val timer = Timer()
+    timer.schedule(object : TimerTask() {
+      override fun run() {
+        handler.post(update)
+      }
+    }, 2000, 2000)
+    val myViewPagerAdapter = IntroViewPagerAdapter()
+    binding.sliderViewPager.adapter = myViewPagerAdapter
+    val viewPagerPageChangeListener: OnPageChangeListener = object : OnPageChangeListener {
+      override fun onPageScrolled(
+        position: Int,
+        positionOffset: Float,
+        positionOffsetPixels: Int
+      ) {
+      }
 
-        val handler = Handler()
-        val update = Runnable { viewPager2.currentItem = (viewPager2.currentItem + 1) % 3 }
+      override fun onPageSelected(position: Int) {
+        addBottomDotsAndText(position)
+      }
 
-        getStarted.setOnClickListener {
-            startActivity(Intent(this@MainActivity, LoginActivity::class.java))
-            overridePendingTransition(R.anim.slide_from_bottom, R.anim.slide_from_bottom)
+      override fun onPageScrollStateChanged(state: Int) {}
+    }
+    binding.sliderViewPager.addOnPageChangeListener(viewPagerPageChangeListener)
+  }
+
+  private fun setUpClickListeners() {
+    binding.getStartedBtn.setOnClickListener { v: View? ->
+      startActivity(Intent(this, LoginActivity::class.java))
+      finish()
+    }
+  }
+
+  private fun addBottomDotsAndText(i: Int) {
+    when (i) {
+      0 -> {
+        binding.apply {
+          headlineTv.text = getString(string.slide_1_title)
+          dot0Tv.setTextColor(ContextCompat.getColor(this@MainActivity, color.colorAccent))
+          dot1Tv.setTextColor(ContextCompat.getColor(this@MainActivity, color.dot_inactive))
+          dot2Tv.setTextColor(ContextCompat.getColor(this@MainActivity, color.dot_inactive))
         }
-        val timer = Timer()
-        timer.schedule(object : TimerTask() {
-            override fun run() {
-                handler.post(update)
-            }
-        }, 2000, 2000)
-        val myViewPagerAdapter = MyViewPagerAdapter()
-        viewPager2.adapter = myViewPagerAdapter
-
-
-        val viewPagerPageChangeListener = object : ViewPager.OnPageChangeListener {
-            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
-
-            }
-
-            override fun onPageSelected(position: Int) {
-                addBottomDotsAndText(position)
-            }
-
-            override fun onPageScrollStateChanged(state: Int) {
-
-            }
+      }
+      1 -> {
+        binding.apply {
+          headlineTv.text = getString(string.slide_2_title)
+          dot0Tv.setTextColor(ContextCompat.getColor(this@MainActivity, color.dot_inactive))
+          dot1Tv.setTextColor(ContextCompat.getColor(this@MainActivity, color.colorAccent))
+          dot2Tv.setTextColor(ContextCompat.getColor(this@MainActivity, color.dot_inactive))
         }
-
-        viewPager2!!.addOnPageChangeListener(viewPagerPageChangeListener)
-
+      }
+      2 -> {
+        binding.apply {
+          headlineTv.text = getString(string.slide_3_title)
+          dot0Tv.setTextColor(ContextCompat.getColor(this@MainActivity, color.dot_inactive))
+          dot1Tv.setTextColor(ContextCompat.getColor(this@MainActivity, color.dot_inactive))
+          dot2Tv.setTextColor(ContextCompat.getColor(this@MainActivity, color.colorAccent))
+        }
+      }
     }
 
-    private fun addBottomDotsAndText(i: Int) {
-        when (i) {
-            0 -> {
-                headline.text = resources.getString(R.string.slide_1_title)
-                dot0.setTextColor(resources.getColor(R.color.colorAccent))
-                dot1.setTextColor(resources.getColor(R.color.dot_inactive))
-                dot2.setTextColor(resources.getColor(R.color.dot_inactive))
-            }
-            1 -> {
-                headline.text = resources.getString(R.string.slide_2_title)
-                dot0.setTextColor(resources.getColor(R.color.dot_inactive))
-                dot1.setTextColor(resources.getColor(R.color.colorAccent))
-                dot2.setTextColor(resources.getColor(R.color.dot_inactive))
-            }
-            2 -> {
-                headline.text = resources.getString(R.string.slide_3_title)
-                dot0.setTextColor(resources.getColor(R.color.dot_inactive))
-                dot1.setTextColor(resources.getColor(R.color.dot_inactive))
-                dot2.setTextColor(resources.getColor(R.color.colorAccent))
-            }
-        }
+  }
+
+  inner class IntroViewPagerAdapter : PagerAdapter() {
+    override fun instantiateItem(
+      container: ViewGroup,
+      position: Int
+    ): Any {
+      val layoutInflater =
+        getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+      val view = layoutInflater.inflate(layouts[position], container, false)
+      container.addView(view)
+      return view
     }
 
-
-    inner class MyViewPagerAdapter : PagerAdapter() {
-        private var layoutInflater: LayoutInflater? = null
-
-        override fun instantiateItem(container: ViewGroup, position: Int): Any {
-            layoutInflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-
-            val view = layoutInflater!!.inflate(layouts!![position], container, false)
-            container.addView(view)
-
-            return view
-        }
-
-        override fun getCount(): Int {
-            return layouts!!.size
-        }
-
-        override fun isViewFromObject(view: View, obj: Any): Boolean {
-            return view === obj
-        }
-
-
-        override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
-            val view = `object` as View
-            container.removeView(view)
-        }
+    override fun getCount(): Int {
+      return layouts.size
     }
+
+    override fun isViewFromObject(
+      view: View,
+      obj: Any
+    ): Boolean {
+      return view === obj
+    }
+
+    override fun destroyItem(
+      container: ViewGroup,
+      position: Int,
+      `object`: Any
+    ) {
+      val view = `object` as View
+      container.removeView(view)
+    }
+  }
 
 }

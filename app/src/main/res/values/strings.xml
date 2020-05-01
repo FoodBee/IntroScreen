@@ -5,5 +5,8 @@
     <string name="slide_2_title">Order from a wide range\n of restaurants</string>
     <string name="slide_3_title">With a wide collection\n of cuisines</string>
     <string name="dot">•</string>
+  <string name="ready_to_order_from_your_favourite_restaurants">Ready to order from your favourite restaurants?</string>
+    <string name="get_started">Get Started</string>
+    <string name="developed_with_by_foodbee">Developed with ❤️ by FoodBee</string>
 
 </resources>
