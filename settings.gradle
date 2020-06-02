@@ -1,1 +1,3 @@
+include ':intro-screen'
 include ':app'
+rootProject.name = "IntroScreen"
