@@ -2,7 +2,6 @@ package `in`.foodbee.intro_screen
 
 import `in`.foodbee.intro_screen.databinding.ActivityIntroBinding
 import android.graphics.drawable.Drawable
-import android.os.Bundle
 import android.os.Handler
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
@@ -14,17 +13,28 @@ open class IntroActivity : AppCompatActivity() {
 
   lateinit var binding: ActivityIntroBinding
 
-  var titleArray: Array<String>? = null
+  private var titleArray: Array<String>? = null
 
-  var subtitleText: String? = null
+  private var subtitleText: String? = null
 
-  var imageArray: Array<Drawable?>? = null
+  private var imageArray: Array<Drawable?>? = null
 
-  var dotInactiveColor: Int? = null
-  var dotActiveColor: Int? = null
+  private var dotInActiveColor: Int? = null
+  private var dotActiveColor: Int? = null
 
-  override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
+  fun initSlide(
+    titleArray: Array<String>,
+    imageArray: Array<Drawable?>,
+    subtitleText: String,
+    dotInActiveColor: Int,
+    dotActiveColor: Int
+  ) {
+    this.titleArray = titleArray
+    this.imageArray = imageArray
+    this.subtitleText = subtitleText
+    this.dotInActiveColor = dotInActiveColor
+    this.dotActiveColor = dotActiveColor
+
     setView()
   }
 
@@ -82,21 +92,21 @@ open class IntroActivity : AppCompatActivity() {
       0 -> {
         binding.apply {
           dot0Tv.setTextColor(dotActiveColor ?: android.R.color.black)
-          dot1Tv.setTextColor(dotInactiveColor ?: android.R.color.black)
-          dot2Tv.setTextColor(dotInactiveColor ?: android.R.color.black)
+          dot1Tv.setTextColor(dotInActiveColor ?: android.R.color.black)
+          dot2Tv.setTextColor(dotInActiveColor ?: android.R.color.black)
         }
       }
       1 -> {
         binding.apply {
-          dot0Tv.setTextColor(dotInactiveColor ?: android.R.color.black)
+          dot0Tv.setTextColor(dotInActiveColor ?: android.R.color.black)
           dot1Tv.setTextColor(dotActiveColor ?: android.R.color.black)
-          dot2Tv.setTextColor(dotInactiveColor ?: android.R.color.black)
+          dot2Tv.setTextColor(dotInActiveColor ?: android.R.color.black)
         }
       }
       2 -> {
         binding.apply {
-          dot0Tv.setTextColor(dotInactiveColor ?: android.R.color.black)
-          dot1Tv.setTextColor(dotInactiveColor ?: android.R.color.black)
+          dot0Tv.setTextColor(dotInActiveColor ?: android.R.color.black)
+          dot1Tv.setTextColor(dotInActiveColor ?: android.R.color.black)
           dot2Tv.setTextColor(dotActiveColor ?: android.R.color.black)
         }
       }
