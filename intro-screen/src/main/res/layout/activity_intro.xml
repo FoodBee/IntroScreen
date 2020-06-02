@@ -9,7 +9,7 @@
   <androidx.viewpager.widget.ViewPager
       android:id="@+id/slider_view_pager"
       android:layout_width="match_parent"
-      android:layout_height="320dp"
+      android:layout_height="350dp"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
@@ -93,5 +93,6 @@
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/subtitle_tv"
       />
 </androidx.constraintlayout.widget.ConstraintLayout>
