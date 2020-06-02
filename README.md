@@ -1,6 +1,8 @@
 # IntroScreen
 swiggy like intro screen 
 
+### Developed with ❤️ by FoodBee
+
 ## Setup
 
 Follow the [Installation Instructions](#installation) to set it up.
