@@ -34,6 +34,7 @@ dependencies {
   implementation 'com.github.foodbee:IntroScreen:(latest-version)'
 }
 ```
+[![](https://jitpack.io/v/foodbee/IntroScreen.svg)](https://jitpack.io/#foodbee/IntroScreen)
 
 And then in your intro screen activity add it like this
 
@@ -80,3 +81,5 @@ class MainActivity : IntroActivity() {
 
 }
 ```
+
+
