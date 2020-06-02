@@ -84,4 +84,7 @@ class MainActivity : IntroActivity() {
 }
 ```
 
+Design credits: Swiggy 
+Assets source: Internet 
+
 
