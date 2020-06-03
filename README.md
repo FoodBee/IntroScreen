@@ -1,7 +1,8 @@
 # IntroScreen
-swiggy like intro screen 
+###### swiggy like intro screen 
 
-### Developed with ❤️ by FoodBee
+#### Developed with ❤️ by FoodBee
+#### Support by clicking the ⭐ button on the upper right of this page. ✌️
 
 ## Setup
 
