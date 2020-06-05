@@ -10,9 +10,8 @@ Follow the [Installation Instructions](#installation) to set it up.
 
 #### working
 
-<p align="center">
-<img width=320 height=640 src="./screenshots/foodbee.gif">
-</p>
+
+<img width=320 height=600 src="./screenshots/foodbee.gif">
 
 ## Installation
 
