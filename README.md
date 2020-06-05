@@ -8,15 +8,11 @@
 
 Follow the [Installation Instructions](#installation) to set it up.
 
-#### Screenshots
+#### working
 
-<table>
-   <tr>
-     <td><kbd><img src="./screenshots/ss1.png"></kbd></td>
-     <td><kbd><img src="./screenshots/ss2.png"></kbd></td>
-     <td><kbd><img src="./screenshots/ss3.png"></kbd></td>
-    </tr>
-</table>
+<p align="center">
+<img width=320 height=640 src="./screenshots/foodbee.gif">
+</p>
 
 ## Installation
 
